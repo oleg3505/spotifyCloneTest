@@ -5,23 +5,16 @@ import { DripsyProvider } from 'dripsy';
 
 const theme = {
   colors: {
-    text: 'green',
+    primary: '#181818',
     background: 'red',
+    inputBG: '#FFFFFF',
   },
 };
 
 export default function App() {
   return (
     <DripsyProvider theme={theme}>
-      <View style={styles.container}>
-        <AppNavigation />
-      </View>
+      <AppNavigation />
     </DripsyProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

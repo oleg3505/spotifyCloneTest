@@ -18,11 +18,11 @@ function AppNavigation() {
             headerShown: false,
           }}
         /> */}
-        {/* <Stack.Screen
+        <Stack.Screen
           name={screens.Auth}
           component={AuthScreen}
-          options={{ headerTitleAlign: 'center' }}
-        /> */}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name={screens.Tab}
           component={TabNavigation}
