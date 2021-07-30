@@ -7,17 +7,17 @@ import TabNavigation from './TabNavigation';
 
 const Stack = createStackNavigator();
 
-function AppNavigation() {
+function AppNavigation(props, ref) {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={ref}>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name={screens.Init}
           component={InitScreen}
           options={{
             headerShown: false,
           }}
-        /> */}
+        />
         <Stack.Screen
           name={screens.Auth}
           component={AuthScreen}
@@ -33,4 +33,4 @@ function AppNavigation() {
   );
 }
 
-export default AppNavigation;
+export default React.forwardRef(AppNavigation);
