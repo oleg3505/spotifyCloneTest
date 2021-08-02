@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AppNavigation from './navigation/AppNavigation';
 import { DripsyProvider } from 'dripsy';
-import { createStore, Provider } from './screens/stores/createStore';
+import { createStore, Provider } from './stores/createStore';
 import * as SplashScreen from 'expo-splash-screen';
 import { screens } from './navigation/screens';
 import { StackActions } from '@react-navigation/native';
