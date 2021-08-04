@@ -21,3 +21,9 @@ export const Auth = {
     return !!this._token;
   },
 };
+
+export const Viewer = {
+  getViewer() {
+    return axios.get('/v1/me');
+  },
+};
