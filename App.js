@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import AppNavigation from './navigation/AppNavigation';
 import { DripsyProvider } from 'dripsy';
 import { createStore, Provider } from './stores/createStore';
@@ -9,7 +9,7 @@ import { StackActions } from '@react-navigation/native';
 
 const theme = {
   colors: {
-    primary: '#181818',
+    primary: '#121212',
     background: 'red',
     inputBG: '#FFFFFF',
   },
@@ -33,6 +33,7 @@ export default function App() {
 
   return (
     <DripsyProvider theme={theme}>
+      <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.3)" />
       <Provider>
         <AppNavigation ref={navigationRef} />
       </Provider>

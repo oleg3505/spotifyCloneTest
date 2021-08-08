@@ -5,8 +5,8 @@ export const PlayListModel = types.model('PlayListModel', {
   href: types.string,
   items: types.array(ItemModel),
   limit: types.number,
-  next: types.null,
+  next: types.maybeNull(types.string),
   offset: types.number,
-  previos: types.null,
+  previos: types.maybeNull(types.string),
   total: types.number,
 });

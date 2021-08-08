@@ -7,4 +7,5 @@ export const InputToken = styled(TextInput)({
   padding: 2,
   bg: 'inputBG',
   borderRadius: 5,
+  marginTop: 25,
 });

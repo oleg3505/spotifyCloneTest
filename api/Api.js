@@ -16,6 +16,10 @@ export const Auth = {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     return axios.get('/v1/me');
   },
+  async logOut() {
+    this._token = null;
+    await SecureStore.deleteItemAsync('__token');
+  },
 
   isLoggedIn() {
     return !!this._token;

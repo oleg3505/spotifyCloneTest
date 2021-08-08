@@ -2,14 +2,15 @@ import { styled } from 'dripsy';
 import React, { useCallback, useState } from 'react';
 import { View, Text, Linking, Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
-import { StyledView } from './components/StyledView';
+import { StyledView } from '../../components/StyledView';
 import { InputToken } from './components/InputToken';
-import { SubmitButton } from './components/SubmitButton';
+
 import Api from '../../api';
 import { useNavigation } from '@react-navigation/native';
 import { screens } from '../../navigation/screens';
 import { InstructionText } from './components/InstructionText';
 import { TokenErr } from './components/TokenErr';
+import { SubmitButton } from '../../components/SubmitButton';
 
 function AuthScreen() {
   const nav = useNavigation();
