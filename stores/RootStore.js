@@ -1,10 +1,12 @@
 import { types } from 'mobx-state-tree';
 import * as SecureStore from 'expo-secure-store';
+
 import { ViewerStore } from './Users/ViewerStore';
 import Api from '../api';
 
 export const RootStore = types
   .model('RootStore', { viewer: types.optional(ViewerStore, {}) })
+
   .actions((store) => ({
     async bootstrap() {
       let log = false;
