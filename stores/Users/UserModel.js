@@ -12,7 +12,10 @@ export const UserModel = types.model('UserModel', {
   product: types.string,
   type: types.string,
   uri: types.string,
-  external_urls: types.optional(ExternalUrlModel, {}),
-  followers: types.optional(FollowersModel, {}),
+
+  external_urls: types.maybeNull(ExternalUrlModel),
+  followers: types.maybeNull(FollowersModel),
+ 
+
   images: types.array(ImageMogel),
 });
