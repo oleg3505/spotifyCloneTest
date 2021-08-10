@@ -36,6 +36,43 @@ const data = [
     imgUri:
       'https://images.freeimages.com/images/small-previews/adf/sun-burst-1478549.jpg',
     text: 'Some singers',
+    songs: [
+      {
+        id: '1',
+        songImgUri:
+          'https://images.freeimages.com/images/small-previews/adf/sun-burst-1478549.jpg',
+        singer: 'Some singer',
+        song: 'some song',
+      },
+      {
+        id: '2',
+        songImgUri:
+          'https://images.freeimages.com/images/small-previews/adf/sun-burst-1478549.jpg',
+        singer: 'Some singer',
+        song: 'some song',
+      },
+      {
+        id: '3',
+        songImgUri:
+          'https://images.freeimages.com/images/small-previews/adf/sun-burst-1478549.jpg',
+        singer: 'Some singer',
+        song: 'some song',
+      },
+      {
+        id: '4',
+        songImgUri:
+          'https://images.freeimages.com/images/small-previews/adf/sun-burst-1478549.jpg',
+        singer: 'Some singer',
+        song: 'some song',
+      },
+      {
+        id: '5',
+        songImgUri:
+          'https://images.freeimages.com/images/small-previews/adf/sun-burst-1478549.jpg',
+        singer: 'Some singer',
+        song: 'some song',
+      },
+    ],
   },
 ];
 
