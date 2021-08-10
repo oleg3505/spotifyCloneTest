@@ -22,10 +22,8 @@ export const Auth = {
   },
 };
 
-
-export const Viewer = {
-  getViewer() {
-
+export const User = {
+  getUser() {
     return axios.get('/v1/me');
   },
 };
