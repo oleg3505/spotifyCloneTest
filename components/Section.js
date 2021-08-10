@@ -1,6 +1,8 @@
 import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { styled } from '@dripsy/core';
+import { useNavigation } from '@react-navigation/native';
+import { screens } from '../navigation/screens';
 
 const SectionName = styled(Text)({
   color: 'white',
@@ -20,8 +22,14 @@ const ItemText = styled(Text)({
 });
 
 function Item({ item }) {
+  const nav = useNavigation();
+
+  function onPressItem() {
+    nav.navigate(screens.PlayList, { item: item });
+  }
+
   return (
-    <Touchble>
+    <Touchble onPress={onPressItem}>
       <Image
         source={{ uri: item.imgUri }}
         style={{ width: '100%', height: 150 }}

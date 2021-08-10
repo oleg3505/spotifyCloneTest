@@ -10,7 +10,6 @@ export function TabGradient(props) {
       end={[0, 1]}
       locations={[0, 0.8]}
       style={{
-        backgroundColor: 'transparent',
         position: 'absolute',
         zIndex: 1,
         bottom: 0,

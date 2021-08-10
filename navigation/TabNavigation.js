@@ -13,6 +13,7 @@ import { HomeScreen, ProfileScreen, SearchScreen } from '../screens';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { TabGradient } from '../components/TabGradient';
+import { HomeStackNavigation } from './HomeStackNavigition';
 
 const Tab = createBottomTabNavigator();
 const theme = {
@@ -34,7 +35,7 @@ export default function TabNavigation() {
     >
       <Tab.Screen
         name={screens.Home}
-        component={HomeScreen}
+        component={HomeStackNavigation}
         options={{
           tabBarIcon: ({ focused }) =>
             focused ? (
