@@ -1,12 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 import { styled } from 'dripsy';
-import React, { useEffect } from 'react';
-import { Alert, Image, Text, View } from 'react-native';
+
+import React from 'react';
+import { Alert, Image, Text } from 'react-native';
 import Api from '../../api';
 import { StyledView } from '../../components/StyledView';
 import { SubmitButton } from '../../components/SubmitButton';
 import { screens } from '../../navigation/screens';
-import { useStore } from '../../stores/createStore';
 
 const profile = {
   fullName: 'Oleh Kondratiuk',
