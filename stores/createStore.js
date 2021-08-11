@@ -1,9 +1,9 @@
-import { RootStore } from './RootStore';
+import { RootModel } from './RootModel';
 import { createContext } from 'react';
 import { useContext } from 'react';
 
 export function createStore() {
-  const root = RootStore.create();
+  const root = RootModel.create();
 
   return root;
 }

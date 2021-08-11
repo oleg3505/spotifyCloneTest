@@ -1,7 +1,10 @@
 import { types } from 'mobx-state-tree';
+import { Model, model } from 'mst-collection';
 
-export const ImageMogel = types.model('ImageModel', {
+class Image extends Model({
   height: types.maybeNull(types.number),
   width: types.maybeNull(types.number),
   url: types.string,
-});
+}) {}
+
+export const ImageModel = model(Image);

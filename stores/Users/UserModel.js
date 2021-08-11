@@ -1,9 +1,10 @@
 import { types } from 'mobx-state-tree';
+import { model, Model } from 'mst-collection';
 import { ExternalUrlModel } from './ExternalUrlModel';
 import { FollowersModel } from './FollowersModel';
-import { ImageMogel } from './ImageModel';
+import { ImageModel } from './ImageModel';
 
-export const UserModel = types.model('UserModel', {
+class User extends Model({
   country: types.string,
   display_name: types.string,
   email: types.string,
@@ -14,5 +15,7 @@ export const UserModel = types.model('UserModel', {
   uri: types.string,
   external_urls: types.maybeNull(ExternalUrlModel),
   followers: types.maybeNull(FollowersModel),
-  images: types.array(ImageMogel),
-});
+  images: types.array(ImageModel),
+}) {}
+
+export const UserModel = model(User);
