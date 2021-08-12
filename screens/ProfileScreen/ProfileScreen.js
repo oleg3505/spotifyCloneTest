@@ -1,10 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import { styled } from 'dripsy';
-
 import React from 'react';
-import { Alert, Image, Text } from 'react-native';
+import { Alert, Image, Text, View } from 'react-native';
 import Api from '../../api';
-import { StyledView } from '../../components/StyledView';
 import { SubmitButton } from '../../components/SubmitButton';
 import { screens } from '../../navigation/screens';
 
@@ -14,22 +12,28 @@ const profile = {
     'https://images.freeimages.com/images/large-previews/773/koldalen-4-1384902.jpg',
 };
 
-const TextInProfile = styled(Text)({
+const FullName = styled(Text)({
   color: 'white',
   fontSize: 24,
   margin: 10,
 });
 
-const LogOutText = styled(Text)({
+const LogOut = styled(Text)({
   width: 100,
   textAlign: 'center',
 });
 
-const ImageStyled = styled(Image)({
+const ProfileImg = styled(Image)({
   width: 200,
   height: 200,
   borderRadius: 100,
   margin: 20,
+});
+
+const Container = styled(View)({
+  flex: 1,
+  bg: 'primary',
+  alignItems: 'center',
 });
 
 function ProfileScreen() {
@@ -49,13 +53,13 @@ function ProfileScreen() {
   }
 
   return (
-    <StyledView contentContainerStyle={{ alignItems: 'center' }}>
-      <ImageStyled source={{ uri: profile.imgUri }} />
-      <TextInProfile>{profile.fullName}</TextInProfile>
+    <Container>
+      <ProfileImg source={{ uri: profile.imgUri }} />
+      <FullName>{profile.fullName}</FullName>
       <SubmitButton onPress={logOut}>
-        <LogOutText>Log out</LogOutText>
+        <LogOut>Log out</LogOut>
       </SubmitButton>
-    </StyledView>
+    </Container>
   );
 }
 export default ProfileScreen;

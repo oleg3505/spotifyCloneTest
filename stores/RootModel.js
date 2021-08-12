@@ -8,7 +8,7 @@ import { UserModel } from './Users/UserModel';
 import { AuthModel } from './Users/Auth/AuthModel';
 
 class Root extends Model({
-  user: types.maybe(UserModel),
+  viewer: types.maybe(UserModel),
   auth: types.optional(AuthModel, {}),
 }) {}
 

@@ -1,7 +1,7 @@
 import { styled } from 'dripsy';
 import React from 'react';
 import { Text, View } from 'react-native';
-import { StyledView } from '../../components/StyledView';
+import { Container } from '../../components/Container';
 
 const TextStyled = styled(Text)({
   color: 'white',
@@ -9,9 +9,9 @@ const TextStyled = styled(Text)({
 
 function SearchScreen() {
   return (
-    <StyledView>
+    <Container>
       <TextStyled>Search</TextStyled>
-    </StyledView>
+    </Container>
   );
 }
 export default SearchScreen;

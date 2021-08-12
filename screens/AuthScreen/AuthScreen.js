@@ -1,10 +1,7 @@
-import { styled } from 'dripsy';
 import React, { useCallback, useState } from 'react';
-import { View, Text, Linking, Alert } from 'react-native';
-import * as SecureStore from 'expo-secure-store';
-import { StyledView } from '../../components/StyledView';
+import { Text, Linking, Alert } from 'react-native';
+import { Container } from '../../components/Container';
 import { InputToken } from './components/InputToken';
-
 import Api from '../../api';
 import { useNavigation } from '@react-navigation/native';
 import { screens } from '../../navigation/screens';
@@ -40,7 +37,7 @@ function AuthScreen() {
     }
   }, [supportedURL]);
   return (
-    <StyledView>
+    <Container>
       <InputToken
         placeholder="Past your token to login"
         value={token}
@@ -67,7 +64,7 @@ function AuthScreen() {
       <SubmitButton onPress={onPressGetToken}>
         <Text>Get token</Text>
       </SubmitButton>
-    </StyledView>
+    </Container>
   );
 }
 export default AuthScreen;

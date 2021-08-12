@@ -1,6 +1,6 @@
 import { styled, View } from '@dripsy/core';
 import React from 'react';
 
-export const ViewBottom = styled(View)({
+export const Footer = styled(View)({
   padding: 25,
 });

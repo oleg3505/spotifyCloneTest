@@ -3,7 +3,6 @@ import React from 'react';
 import { styled } from '@dripsy/core';
 import { useNavigation } from '@react-navigation/native';
 import { screens } from '../navigation/screens';
-import { FlatListFlexGrow } from './FlatListFlexGrow';
 
 const SectionName = styled(Text)({
   color: 'white',
@@ -17,7 +16,7 @@ const Touchble = styled(TouchableOpacity)({
   margin: 10,
 });
 
-const ItemText = styled(Text)({
+const PlaylistTitle = styled(Text)({
   color: 'grey',
   padding: 10,
 });
@@ -26,12 +25,16 @@ const StyledView = styled(View)({
   flex: 1,
 });
 
-const ImageStyled = styled(Image)({
+const PlayListCover = styled(Image)({
   width: '100%',
   height: 150,
 });
 
-function Item({ item }) {
+const PlayListList = styled(FlatList)({
+  flexGrow: 1,
+});
+
+function PlayListComponent({ item }) {
   const nav = useNavigation();
 
   function onPressItem() {
@@ -40,8 +43,8 @@ function Item({ item }) {
 
   return (
     <Touchble onPress={onPressItem}>
-      <ImageStyled source={{ uri: item.imgUri }} />
-      <ItemText>{item.text}</ItemText>
+      <PlayListCover source={{ uri: item.imgUri }} />
+      <PlaylistTitle>{item.text}</PlaylistTitle>
     </Touchble>
   );
 }
@@ -50,9 +53,9 @@ export function Section({ sectionName, data }) {
   return (
     <StyledView>
       <SectionName>{sectionName}</SectionName>
-      <FlatListFlexGrow
+      <PlayListList
         horizontal={true}
-        renderItem={({ item }) => <Item item={item} />}
+        renderItem={({ item }) => <PlayListComponent item={item} />}
         keyExtractor={(item) => item.id}
         data={data}
         showsHorizontalScrollIndicator={false}
