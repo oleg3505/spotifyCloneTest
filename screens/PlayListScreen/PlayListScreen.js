@@ -1,7 +1,9 @@
 import { styled } from 'dripsy';
 import React from 'react';
 import { Text, View, FlatList, Image, TouchableOpacity } from 'react-native';
+import { FlatListFlexGrow } from '../../components/FlatListFlexGrow';
 import { StyledView } from '../../components/StyledView';
+import { ViewBottom } from '../../components/ViewBottom';
 
 const ViewSongsFlatList = styled(View)({
   flexDirection: 'row',
@@ -15,14 +17,24 @@ const TextSinger = styled(Text)({
   color: 'grey',
 });
 
+const ImageStyled = styled(Image)({
+  width: 250,
+  height: 250,
+  margin: 20,
+  marginHorizontal: 50,
+});
+
+const ImageStyledItem = styled(Image)({
+  width: 50,
+  height: 50,
+  margin: 10,
+});
+
 function Item({ item }) {
   return (
     <TouchableOpacity>
       <ViewSongsFlatList>
-        <Image
-          source={{ uri: item.songImgUri }}
-          style={{ width: 50, height: 50, margin: 10 }}
-        />
+        <ImageStyledItem source={{ uri: item.songImgUri }} />
         <View>
           <TextSong>{item.song}</TextSong>
           <TextSinger>{item.singer}</TextSinger>
@@ -34,23 +46,19 @@ function Item({ item }) {
 
 function PlayListScreen({ route }) {
   const { item } = route.params;
-  console.log(route.params);
+
   return (
-    <StyledView style={{ flex: 1 }}>
-      <Image
-        source={{ uri: item.imgUri }}
-        style={{ width: 250, height: 250, margin: 20, marginHorizontal: 50 }}
-      />
-      <Text style={{ color: 'white' }}>Play list</Text>
-      <Text style={{ color: 'white' }}>{item.text}</Text>
-      <FlatList
-        contentContainerStyle={{ flexGrow: 1 }}
+    <StyledView>
+      <ImageStyled source={{ uri: item.imgUri }} />
+      <TextSong>Play list</TextSong>
+      <TextSong>{item.text}</TextSong>
+      <FlatListFlexGrow
         renderItem={({ item }) => <Item item={item} />}
         keyExtractor={(item) => item.id}
         data={item.songs}
         showsVerticalScrollIndicator={false}
       />
-      <View style={{ padding: 25 }}></View>
+      <ViewBottom />
     </StyledView>
   );
 }

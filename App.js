@@ -6,6 +6,7 @@ import { createStore, Provider } from './stores/createStore';
 import * as SplashScreen from 'expo-splash-screen';
 import { screens } from './navigation/screens';
 import { StackActions } from '@react-navigation/native';
+import * as SecureStore from 'expo-secure-store';
 
 const theme = {
   colors: {
@@ -21,7 +22,7 @@ export default function App() {
   const navigationRef = useRef();
   useEffect(() => {
     async function awaitBootstrap() {
-      const log = await store.bootstrap();
+      const log = await store.auth.loginCheck();
 
       navigationRef.current?.dispatch(
         StackActions.replace(log ? screens.Tab : screens.Auth),

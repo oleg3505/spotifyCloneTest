@@ -2,6 +2,6 @@ import React from 'react';
 import { View } from 'react-native';
 
 function PlayerScreen() {
-  return <View style={{ flex: 1 }}></View>;
+  return <View></View>;
 }
 export default PlayerScreen;

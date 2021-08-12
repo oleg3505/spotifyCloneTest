@@ -5,6 +5,7 @@ import { Image, Text, View } from 'react-native';
 
 import { Section } from '../../components/Section';
 import { StyledView } from '../../components/StyledView';
+import { ViewBottom } from '../../components/ViewBottom';
 import { data } from './data';
 
 function HomeScreen() {
@@ -15,7 +16,7 @@ function HomeScreen() {
       <Section sectionName="For home" data={data} />
       <Section sectionName="Consentration" data={data} />
       <Section sectionName="New relizes" data={data} />
-      <View style={{ padding: 25 }}></View>
+      <ViewBottom />
     </StyledView>
   );
 }

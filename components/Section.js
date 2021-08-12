@@ -3,6 +3,7 @@ import React from 'react';
 import { styled } from '@dripsy/core';
 import { useNavigation } from '@react-navigation/native';
 import { screens } from '../navigation/screens';
+import { FlatListFlexGrow } from './FlatListFlexGrow';
 
 const SectionName = styled(Text)({
   color: 'white',
@@ -21,6 +22,15 @@ const ItemText = styled(Text)({
   padding: 10,
 });
 
+const StyledView = styled(View)({
+  flex: 1,
+});
+
+const ImageStyled = styled(Image)({
+  width: '100%',
+  height: 150,
+});
+
 function Item({ item }) {
   const nav = useNavigation();
 
@@ -30,10 +40,7 @@ function Item({ item }) {
 
   return (
     <Touchble onPress={onPressItem}>
-      <Image
-        source={{ uri: item.imgUri }}
-        style={{ width: '100%', height: 150 }}
-      />
+      <ImageStyled source={{ uri: item.imgUri }} />
       <ItemText>{item.text}</ItemText>
     </Touchble>
   );
@@ -41,16 +48,15 @@ function Item({ item }) {
 
 export function Section({ sectionName, data }) {
   return (
-    <View style={{ flex: 1 }}>
+    <StyledView>
       <SectionName>{sectionName}</SectionName>
-      <FlatList
-        contentContainerStyle={{ flexGrow: 1 }}
+      <FlatListFlexGrow
         horizontal={true}
         renderItem={({ item }) => <Item item={item} />}
         keyExtractor={(item) => item.id}
         data={data}
         showsHorizontalScrollIndicator={false}
       />
-    </View>
+    </StyledView>
   );
 }

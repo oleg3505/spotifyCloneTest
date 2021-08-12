@@ -25,6 +25,13 @@ const LogOutText = styled(Text)({
   textAlign: 'center',
 });
 
+const ImageStyled = styled(Image)({
+  width: 200,
+  height: 200,
+  borderRadius: 100,
+  margin: 20,
+});
+
 function ProfileScreen() {
   const nav = useNavigation();
 
@@ -43,10 +50,7 @@ function ProfileScreen() {
 
   return (
     <StyledView contentContainerStyle={{ alignItems: 'center' }}>
-      <Image
-        source={{ uri: profile.imgUri }}
-        style={{ width: 200, height: 200, borderRadius: 100, margin: 20 }}
-      />
+      <ImageStyled source={{ uri: profile.imgUri }} />
       <TextInProfile>{profile.fullName}</TextInProfile>
       <SubmitButton onPress={logOut}>
         <LogOutText>Log out</LogOutText>

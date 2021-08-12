@@ -1,11 +1,16 @@
+import { styled } from 'dripsy';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { StyledView } from '../../components/StyledView';
 
+const TextStyled = styled(Text)({
+  color: 'white',
+});
+
 function SearchScreen() {
   return (
     <StyledView>
-      <Text style={{ color: 'white' }}>Search</Text>
+      <TextStyled>Search</TextStyled>
     </StyledView>
   );
 }

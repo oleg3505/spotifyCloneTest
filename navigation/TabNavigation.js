@@ -16,10 +16,6 @@ import { TabGradient } from '../components/TabGradient';
 import { HomeStackNavigation } from './HomeStackNavigition';
 
 const Tab = createBottomTabNavigator();
-const theme = {
-  active: '#FFFFFF',
-  inactive: '#B2B2B2',
-};
 
 export default function TabNavigation() {
   return (
@@ -27,77 +23,51 @@ export default function TabNavigation() {
       tabBar={(props) => {
         return <TabGradient {...props} />;
       }}
-      theme={theme}
       backBehavior="initialRoute"
       tabBarOptions={{
         keyboardHidesTabBar: true,
+
+        activeTintColor: '#FFFFFF',
+        inactiveTintColor: '#B2B2B2',
       }}
     >
       <Tab.Screen
         name={screens.Home}
         component={HomeStackNavigation}
         options={{
-          tabBarIcon: ({ focused }) =>
+          tabBarIcon: ({ focused, color }) =>
             focused ? (
-              <Fontisto name="home" size={24} color={theme.active} />
+              <Fontisto name="home" size={24} color={color} />
             ) : (
-              <SimpleLineIcons name="home" size={24} color={theme.inactive} />
+              <SimpleLineIcons name="home" size={24} color={color} />
             ),
-          tabBarLabel: ({ focused }) => (
-            <Text
-              style={[
-                focused ? { color: theme.active } : { color: theme.inactive },
-              ]}
-            >
-              Home
-            </Text>
-          ),
+          tabBarLabel: 'Home',
         }}
       />
       <Tab.Screen
         name={screens.Search}
         component={SearchScreen}
         options={{
-          tabBarIcon: ({ focused }) =>
+          tabBarIcon: ({ focused, color }) =>
             focused ? (
-              <Ionicons name="md-search" size={24} color={theme.active} />
+              <Ionicons name="md-search" size={24} color={color} />
             ) : (
-              <Ionicons
-                name="ios-search-outline"
-                size={24}
-                color={theme.inactive}
-              />
+              <Ionicons name="ios-search-outline" size={24} color={color} />
             ),
-          tabBarLabel: ({ focused }) => (
-            <Text
-              style={[
-                focused ? { color: theme.active } : { color: theme.inactive },
-              ]}
-            >
-              Search
-            </Text>
-          ),
+          tabBarLabel: 'Search',
         }}
       />
       <Tab.Screen
         name={screens.Profile}
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({ focused }) =>
+          tabBarIcon: ({ focused, color }) =>
             focused ? (
-              <FontAwesome5 name="user-alt" size={24} color={theme.active} />
+              <FontAwesome5 name="user-alt" size={24} color={color} />
             ) : (
-              <FontAwesome5 name="user" size={24} color={theme.inactive} />
+              <FontAwesome5 name="user" size={24} color={color} />
             ),
-          tabBarLabel: ({ focused }) => (
-            <Text
-              style={[
-                focused ? { color: theme.active } : { color: theme.inactive },
-              ]}
-            >
-              Profile
-            </Text>
-          ),
+          tabBarLabel: 'Profile',
         }}
       />
     </Tab.Navigator>

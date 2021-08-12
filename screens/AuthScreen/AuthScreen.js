@@ -17,6 +17,7 @@ function AuthScreen() {
   async function onPressSubmit() {
     try {
       const res = await Api.Auth.loginWithToken(token);
+
       await Api.Auth.setToken(token);
       nav.navigate(screens.Tab);
     } catch (err) {
