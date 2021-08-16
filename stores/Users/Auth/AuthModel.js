@@ -3,28 +3,28 @@ import Api from '../../../api';
 import * as SecureStore from 'expo-secure-store';
 
 class Auth extends Model({
-  loginStatus: false,
+  isLoggedIn: false,
 }) {
-  setLoginStatus(status) {
-    this.loginStatus = status;
+  setIsLoggedIn(status) {
+    this.isLoggedIn = status;
   }
 
   async loginCheck() {
     try {
       const token = await SecureStore.getItemAsync('__token');
       if (!token) {
-        return this.loginStatus;
+        return this.isLoggedIn;
       }
 
       const res = await Api.Auth.loginWithToken(token);
 
       if (res.data) {
-        this.setLoginStatus(true);
-        return this.loginStatus;
+        this.setIsLoggedIn(true);
+        return this.isLoggedIn;
       }
     } catch (err) {
       console.log(err);
-      return this.loginStatus;
+      return this.isLoggedIn;
     }
   }
 }
