@@ -17,7 +17,7 @@ class Viewer extends Model({
       async function (flow) {
         try {
           const res = await Api.Viewer.getViewer();
-
+          console.log(res.data)
           const resalt = flow.merge(res.data, UserCollection);
           this.setUser(result);
           console.log(resalt);

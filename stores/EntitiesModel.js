@@ -3,7 +3,7 @@ import { model, Model } from 'mst-collection';
 import { UserCollection } from './Users/UserCollection';
 
 class Entities extends Model({
-  user: types.maybe(UserCollection),
+  user: types.maybeNull(UserCollection),
 }) {}
 
 export const EntitiesModel = model(Entities);
