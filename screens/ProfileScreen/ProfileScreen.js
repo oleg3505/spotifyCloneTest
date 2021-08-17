@@ -1,10 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 import { styled } from 'dripsy';
 import React from 'react';
+import { useEffect } from 'react';
 import { Alert, Image, Text, View } from 'react-native';
 import Api from '../../api';
 import { SubmitButton } from '../../components/SubmitButton';
 import { screens } from '../../navigation/screens';
+import { createStore } from '../../stores/createStore';
 
 const profile = {
   fullName: 'Oleh Kondratiuk',
@@ -36,7 +38,13 @@ const Container = styled(View)({
   alignItems: 'center',
 });
 
+const store = createStore();
 function ProfileScreen() {
+  useEffect(() => {
+    store.viewer.getUser.run();
+    console.log(store.viewer.user);
+  }, []);
+
   const nav = useNavigation();
 
   function logOut() {

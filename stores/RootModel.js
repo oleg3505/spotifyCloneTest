@@ -1,15 +1,16 @@
 import { types } from 'mobx-state-tree';
-import * as SecureStore from 'expo-secure-store';
-import Api from '../api';
-import { createThunk, model, Model } from 'mst-collection';
 
-import { autorun } from 'mobx';
-import { UserModel } from './Users/UserModel';
+import { model, Model } from 'mst-collection';
+
 import { AuthModel } from './Users/Auth/AuthModel';
 
+import { EntitiesModel } from './EntitiesModel';
+import { ViewerModel } from './Users/ViewerModel';
+
 class Root extends Model({
-  viewer: types.maybe(UserModel),
+  viewer: types.optional(ViewerModel, {}),
   auth: types.optional(AuthModel, {}),
+  entities: types.optional(EntitiesModel, {}),
 }) {}
 
 export const RootModel = model(Root);

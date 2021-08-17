@@ -9,7 +9,7 @@ class User extends Model({
   display_name: types.string,
   email: types.string,
   href: types.string,
-  id: types.string,
+  id: types.identifier,
   product: types.string,
   type: types.string,
   uri: types.string,
