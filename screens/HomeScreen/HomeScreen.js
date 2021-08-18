@@ -7,8 +7,15 @@ import { Section } from '../../components/Section';
 import { Container } from '../../components/Container';
 import { Footer } from '../../components/Footer';
 import { data } from './data';
+import { useEffect } from 'react';
+import { createStore } from '../../stores/createStore';
+
+const store = createStore();
 
 function HomeScreen() {
+  useEffect(() => {
+    store.getCategories.run();
+  }, []);
   return (
     <Container>
       <Section sectionName="Special for u" data={data} />

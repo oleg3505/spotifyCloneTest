@@ -12,7 +12,7 @@ export const Auth = {
 
   loginWithToken(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    return axios.get('/v1/me');
+    return axios.get('https://api.spotify.com/v1/me');
   },
   async logOut() {
     this._token = null;

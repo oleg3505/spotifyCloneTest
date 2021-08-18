@@ -1,4 +1,4 @@
-import { Model } from 'mst-collection';
+import { Model, model } from 'mst-collection';
 
 class CLCollection extends Model({}) {}
 
