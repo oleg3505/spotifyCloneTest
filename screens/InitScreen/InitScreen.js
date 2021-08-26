@@ -4,9 +4,10 @@ import { View } from 'react-native';
 
 const Container = styled(View)({
   flex: 1,
+  backgroundColor: '#111111',
 });
 
 function InitScreen() {
-  return <Container></Container>;
+  return <Container />;
 }
 export default InitScreen;

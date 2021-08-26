@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { styled } from 'dripsy';
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Alert, Image, Text, View } from 'react-native';
 import Api from '../../api';
 import { SubmitButton } from '../../components/SubmitButton';

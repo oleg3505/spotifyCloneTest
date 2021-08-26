@@ -24,12 +24,13 @@ export default function App() {
     async function awaitBootstrap() {
       const log = await store.auth.loginCheck();
 
-      navigationRef.current?.dispatch(
-        StackActions.replace(log ? screens.Tab : screens.Auth),
+      await navigationRef.current?.dispatch(
+        await StackActions.replace(log ? screens.Tab : screens.Auth),
       );
-      await SplashScreen.hideAsync();
     }
+    SplashScreen.preventAutoHideAsync();
     awaitBootstrap();
+    SplashScreen.hideAsync();
   }, []);
 
   return (
