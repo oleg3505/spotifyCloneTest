@@ -24,6 +24,7 @@ export const Auth = {
   },
 };
 
+<<<<<<< HEAD
 export const Viewer = {
   getViewer() {
     return axios.get('https://api.spotify.com/v1/me');
@@ -43,5 +44,10 @@ export const Categories = {
 
   getCategory(href) {
     return axios.get(`${href}`);
+=======
+export const User = {
+  getUser() {
+    return axios.get('/v1/me');
+>>>>>>> 8ae496129558fa4532b5052233d1da5b011e87d1
   },
 };
