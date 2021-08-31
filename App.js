@@ -23,7 +23,9 @@ export default function App() {
   useEffect(() => {
     async function awaitBootstrap() {
       const log = await store.auth.loginCheck();
-
+      if (log) {
+        store.bootstrap.run();
+      }
       navigationRef.current?.dispatch(
         StackActions.replace(log ? screens.Tab : screens.Auth),
       );

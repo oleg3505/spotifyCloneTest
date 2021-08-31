@@ -1,21 +1,17 @@
 import { styled } from 'dripsy';
-
-import React from 'react';
-import { Image, Text, View } from 'react-native';
-
+import React, { useEffect } from 'react';
 import { Section } from '../../components/Section';
 import { Container } from '../../components/Container';
 import { Footer } from '../../components/Footer';
 import { data } from './data';
-import { useEffect } from 'react';
 import { createStore } from '../../stores/createStore';
 
 const store = createStore();
 
 function HomeScreen() {
-  useEffect(() => {
-    store.getCategories.run();
-  }, []);
+  // useEffect(() => {
+  //   store.categories.fetch.run();
+  // }, []);
   return (
     <Container>
       <Section sectionName="Special for u" data={data} />

@@ -12,20 +12,20 @@ class Viewer extends Model({
   setUser(data) {
     this.user = data;
   }
-  getUser = createThunk(
-    () =>
-      async function (flow) {
-        try {
-          const res = await Api.Viewer.getViewer();
-          console.log(res.data)
-          const resalt = flow.merge(res.data, UserCollection);
-          this.setUser(result);
-          console.log(resalt);
-        } catch (err) {
-          console.log(err);
-        }
-      },
-  );
+  // getUser = createThunk(
+  //   () =>
+  //     async function (flow) {
+  //       try {
+  //         const res = await Api.Viewer.getViewer();
+  //         console.log(res.data)
+  //         const resalt = flow.merge(res.data, UserCollection);
+  //         this.setUser(result);
+  //         console.log(resalt);
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     },
+  // );
 }
 
 export const ViewerModel = model(Viewer);
