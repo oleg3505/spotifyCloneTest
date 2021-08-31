@@ -6,7 +6,7 @@ import { FollowersModel } from './FollowersModel';
 import { ImageModel } from './ImageModel';
 
 class User extends Model({
-  // country: types.string,
+  country: types.string,
   display_name: types.string,
   email: types.string,
   href: types.string,

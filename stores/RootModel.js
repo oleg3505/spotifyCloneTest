@@ -20,9 +20,9 @@ class Root extends Model({
       async function (flow) {
         try {
           const res = await Api.Viewer.getViewer();
-          console.log(res.data);
-          const resalt = flow.merge([res.data], UserCollectionSchema);
-          console.log(this.entities.user.collection);
+          const result = flow.merge(res.data, User);
+          this.viewer.setUser(result.result);
+          console.log(this.viewer.user);
         } catch (err) {
           console.log(err);
         }
