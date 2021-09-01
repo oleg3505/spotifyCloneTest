@@ -1,11 +1,12 @@
 import { getRoot, types } from 'mobx-state-tree';
 import { ListModel, model, createThunk } from 'mst-collection';
 import Api from '../../api';
+import { CategoryCollectionSchema } from '../schemas';
 import { CategoriesListCollection } from './CategoriesListCollection';
 import { CategoryModel } from './CategoryModel';
 
-class CategoriesList extends ListModel(types.reference(CategoryModel), {
-  schema: CategoriesListCollection,
+class CategoriesList extends ListModel(types.safeReference(CategoryModel), {
+  idAttribute: 'id',
 }) {
   fetch = createThunk(
     () =>
@@ -14,14 +15,11 @@ class CategoriesList extends ListModel(types.reference(CategoryModel), {
         const res = await Api.Categories.getCategoriesList(
           getRoot(this).viewer.user.id,
         );
-        // console.log(res)
-
-        const resalt = this.merge(
+        const result = flow.merge(
           res.data.categories.items,
-          CategoriesListCollection,
+          CategoryCollectionSchema,
         );
-        // console.log(resalt);
-        this.set(result);
+        this.set(result.result);
       },
   );
 }

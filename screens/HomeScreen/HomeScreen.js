@@ -4,14 +4,17 @@ import { Section } from '../../components/Section';
 import { Container } from '../../components/Container';
 import { Footer } from '../../components/Footer';
 import { data } from './data';
-import { createStore } from '../../stores/createStore';
-
-const store = createStore();
+import { useStore } from '../../stores/createStore';
+import { observer } from 'mobx-react';
 
 function HomeScreen() {
-  // useEffect(() => {
-  //   store.categories.fetch.run();
-  // }, []);
+  const store = useStore();
+  useEffect(() => {
+    console.log(store.viewer.user);
+    store.categories.fetch.run();
+  }, []);
+  console.log('1', store.categories.asArray);
+
   return (
     <Container>
       <Section sectionName="Special for u" data={data} />
@@ -24,4 +27,4 @@ function HomeScreen() {
   );
 }
 
-export default HomeScreen;
+export default observer(HomeScreen);

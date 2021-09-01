@@ -6,7 +6,7 @@ import { ViewerModel } from './Users/ViewerModel';
 import Api from '../api';
 import { CategoriesListModel } from './Categories/CategoriesListModel';
 import { UserCollection } from './Users/UserCollection';
-import { User, UserCollectionSchema } from './schemas';
+import { UserSchema } from './schemas';
 
 class Root extends Model({
   viewer: types.optional(ViewerModel, {}),
@@ -20,9 +20,9 @@ class Root extends Model({
       async function (flow) {
         try {
           const res = await Api.Viewer.getViewer();
-          const result = flow.merge(res.data, User);
+          const result = flow.merge(res.data, UserSchema);
+          console.log(result);
           this.viewer.setUser(result.result);
-          console.log(this.viewer.user);
         } catch (err) {
           console.log(err);
         }
