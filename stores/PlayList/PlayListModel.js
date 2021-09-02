@@ -1,5 +1,6 @@
 import { types } from 'mobx-state-tree';
 import { Model, model } from 'mst-collection';
+import { TrackItemsListModel } from '../Tracks/TrackItemsListModel';
 import { ExternalUrlModel } from '../Users/ExternalUrlModel';
 import { UserModel } from '../Users/UserModel';
 import { ImageModel } from './ImageModel';
@@ -19,6 +20,7 @@ class Playlist extends Model({
   //   type: types.string,
   //   uri: types.string,
   description: types.string,
+  trackItems: types.optional(TrackItemsListModel, {}),
 }) {}
 
 export const PlaylistModel = model(Playlist);

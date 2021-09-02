@@ -39,7 +39,10 @@ const PlayListList = styled(FlatList)({
 function PlayListComponent({ item }) {
   const nav = useNavigation();
 
-  function onPressItem() {
+  async function onPressItem() {
+    await item.trackItems.fetch.run(item.id);
+    console.log(item.trackItems.asArray);
+
     nav.navigate(screens.PlayList, { item: item });
   }
 
@@ -58,7 +61,7 @@ function Section({ item }) {
     item.playlists.fetch.run(item.id);
   }, []);
   // console.log(item);
-  console.log(item.playlists.asArray);
+  // console.log(item.playlists.asArray);
   return (
     <StyledView>
       <SectionName>{item.name}</SectionName>
