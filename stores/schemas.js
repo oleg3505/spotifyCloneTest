@@ -4,3 +4,5 @@ export const UserSchema = new schema.Entity('user');
 export const UserCollectionSchema = [UserSchema];
 export const CategorySchema = new schema.Entity('categories');
 export const CategoryCollectionSchema = [CategorySchema];
+export const PlaylistSchema = new schema.Entity('playlists');
+export const PlayListsCollectionSchema = [PlaylistSchema];
