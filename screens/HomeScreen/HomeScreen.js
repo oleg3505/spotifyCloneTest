@@ -1,21 +1,20 @@
 import { styled } from 'dripsy';
-
-import React from 'react';
-import { Image, Text, View } from 'react-native';
-
+import React, { useEffect } from 'react';
 import { Section } from '../../components/Section';
 import { Container } from '../../components/Container';
 import { Footer } from '../../components/Footer';
 import { data } from './data';
-import { useEffect } from 'react';
-import { createStore } from '../../stores/createStore';
-
-const store = createStore();
+import { useStore } from '../../stores/createStore';
+import { observer } from 'mobx-react';
 
 function HomeScreen() {
+  const store = useStore();
   useEffect(() => {
-    store.getCategories.run();
+    console.log(store.viewer.user);
+    store.categories.fetch.run();
   }, []);
+  console.log('1', store.categories.asArray);
+
   return (
     <Container>
       <Section sectionName="Special for u" data={data} />
@@ -28,4 +27,4 @@ function HomeScreen() {
   );
 }
 
-export default HomeScreen;
+export default observer(HomeScreen);

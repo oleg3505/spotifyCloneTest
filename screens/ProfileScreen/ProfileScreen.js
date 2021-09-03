@@ -41,8 +41,8 @@ const Container = styled(View)({
 const store = createStore();
 function ProfileScreen() {
   useEffect(() => {
-    store.viewer.getUser.run();
-    console.log(store.viewer.user);
+    // store.viewer.getUser.run();
+    // console.log(store.viewer.user);
   }, []);
 
   const nav = useNavigation();
