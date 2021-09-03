@@ -34,11 +34,23 @@ export const PlayLists = {
   getUserPlayListsById(id) {
     return axios.get(`https://api.spotify.com/v1/users/${id}/playlists`);
   },
+
+  getTracksFromPlayList(playlistId) {
+    return axios.get(
+      `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+    );
+  },
 };
 
 export const Categories = {
   getCategoriesList() {
     return axios.get('https://api.spotify.com/v1/browse/categories');
+  },
+
+  getCategoryPlayLists(categoryId) {
+    return axios.get(
+      `https://api.spotify.com/v1/browse/categories/${categoryId}/playlists`,
+    );
   },
 
   getCategory(href) {

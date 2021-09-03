@@ -1,35 +1,28 @@
 import { types } from 'mobx-state-tree';
-
 import { model, Model, createThunk } from 'mst-collection';
-
 import { AuthModel } from './Users/Auth/AuthModel';
-
-import { EntitiesModel } from './EntitiesModel';
+import { RootEntitiesModel } from './RootEntitiesModel';
 import { ViewerModel } from './Users/ViewerModel';
-import { CategoriesListModel } from './Categories/CategoriesListModel';
 import Api from '../api';
-import { CategoriesListCollection } from './Categories/CategoriesListCollection';
+import { CategoriesListModel } from './Categories/CategoriesListModel';
+import { UserCollection } from './Users/UserCollection';
+import { UserSchema } from './schemas';
 
 class Root extends Model({
   viewer: types.optional(ViewerModel, {}),
   auth: types.optional(AuthModel, {}),
-  categories: types.maybe(CategoriesListModel),
-  entities: types.optional(EntitiesModel, {}),
+  categories: types.optional(CategoriesListModel, {}),
+  entities: types.optional(RootEntitiesModel, {}),
 }) {
-  setCategories(data) {
-    this.categories = data;
-  }
-
-  getCategories = createThunk(
+  bootstrap = createThunk(
     () =>
+      /** @this Root */
       async function (flow) {
         try {
-          const resId = await Api.Viewer.getViewer();
-          const id = resId.data.id;
-          const res = await Api.Categories.getCategoriesList(id);
-          console.log(res.data);
-          const resalt = flow.merge(res.data, CategoriesListCollection);
-          this.setCategories(resalt);
+          const res = await Api.Viewer.getViewer();
+          const result = flow.merge(res.data, UserSchema);
+          console.log(result);
+          this.viewer.setUser(result.result);
         } catch (err) {
           console.log(err);
         }

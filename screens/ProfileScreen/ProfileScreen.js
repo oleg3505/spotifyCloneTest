@@ -1,18 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import { styled } from 'dripsy';
 import React from 'react';
-import { useEffect } from 'react';
 import { Alert, Image, Text, View } from 'react-native';
 import Api from '../../api';
 import { SubmitButton } from '../../components/SubmitButton';
 import { screens } from '../../navigation/screens';
-import { createStore } from '../../stores/createStore';
-
-const profile = {
-  fullName: 'Oleh Kondratiuk',
-  imgUri:
-    'https://images.freeimages.com/images/large-previews/773/koldalen-4-1384902.jpg',
-};
+import { useStore } from '../../stores/createStore';
 
 const FullName = styled(Text)({
   color: 'white',
@@ -38,12 +31,8 @@ const Container = styled(View)({
   alignItems: 'center',
 });
 
-const store = createStore();
 function ProfileScreen() {
-  useEffect(() => {
-    store.viewer.getUser.run();
-    console.log(store.viewer.user);
-  }, []);
+  const store = useStore();
 
   const nav = useNavigation();
 
@@ -62,8 +51,8 @@ function ProfileScreen() {
 
   return (
     <Container>
-      <ProfileImg source={{ uri: profile.imgUri }} />
-      <FullName>{profile.fullName}</FullName>
+      <ProfileImg source={{ uri: store.viewer.user.images[0].url }} />
+      <FullName>{store.viewer.user.display_name}</FullName>
       <SubmitButton onPress={logOut}>
         <LogOut>Log out</LogOut>
       </SubmitButton>

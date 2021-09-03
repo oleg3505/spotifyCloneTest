@@ -1,31 +1,32 @@
 import { styled } from 'dripsy';
-
-import React from 'react';
-import { Image, Text, View } from 'react-native';
-
+import React, { useEffect } from 'react';
 import { Section } from '../../components/Section';
 import { Container } from '../../components/Container';
 import { Footer } from '../../components/Footer';
 import { data } from './data';
-import { useEffect } from 'react';
-import { createStore } from '../../stores/createStore';
-
-const store = createStore();
+import { useStore } from '../../stores/createStore';
+import { observer } from 'mobx-react';
+import CategoriesList from '../../components/CategoriesList';
 
 function HomeScreen() {
+  const store = useStore();
   useEffect(() => {
-    store.getCategories.run();
+    // console.log(store.viewer.user);
+    store.categories.fetch.run();
   }, []);
+  // console.log('1', store.categories.asArray);
+
   return (
     <Container>
-      <Section sectionName="Special for u" data={data} />
+      <CategoriesList data={store.categories.asArray} />
+      {/* <Section sectionName="Special for u" data={data} />
       <Section sectionName="Feel" data={data} />
       <Section sectionName="For home" data={data} />
       <Section sectionName="Consentration" data={data} />
-      <Section sectionName="New relizes" data={data} />
+      <Section sectionName="New relizes" data={data} /> */}
       <Footer />
     </Container>
   );
 }
 
-export default HomeScreen;
+export default observer(HomeScreen);

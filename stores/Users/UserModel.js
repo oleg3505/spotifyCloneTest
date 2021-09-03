@@ -14,10 +14,10 @@ class User extends Model({
   product: types.string,
   type: types.string,
   uri: types.string,
-  external_urls: types.maybeNull(ExternalUrlModel),
-  followers: types.maybeNull(FollowersModel),
+  // external_urls: types.maybeNull(ExternalUrlModel),
+  // followers: types.maybeNull(FollowersModel),
   images: types.array(ImageModel),
-  explicit_content: types.maybeNull(ExplicitContent),
+  // explicit_content: types.maybeNull(ExplicitContent),
 }) {}
 
 export const UserModel = model(User);

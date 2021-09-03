@@ -22,10 +22,12 @@ export default function App() {
   const navigationRef = useRef();
   useEffect(() => {
     async function awaitBootstrap() {
-      const log = await store.auth.loginCheck();
-
+      const isLogged = await store.auth.loginCheck();
+      if (isLogged) {
+        await store.bootstrap.run();
+      }
       navigationRef.current?.dispatch(
-        StackActions.replace(log ? screens.Tab : screens.Auth),
+        StackActions.replace(isLogged ? screens.Tab : screens.Auth),
       );
       await SplashScreen.hideAsync();
     }
@@ -35,7 +37,7 @@ export default function App() {
   return (
     <DripsyProvider theme={theme}>
       <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.3)" />
-      <Provider>
+      <Provider value={store}>
         <AppNavigation ref={navigationRef} />
       </Provider>
     </DripsyProvider>

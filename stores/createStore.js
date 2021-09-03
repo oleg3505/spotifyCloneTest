@@ -1,6 +1,5 @@
+import { createContext, useContext } from 'react';
 import { RootModel } from './RootModel';
-import { createContext } from 'react';
-import { useContext } from 'react';
 
 export function createStore() {
   const root = RootModel.create();
