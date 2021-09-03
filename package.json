@@ -36,7 +36,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.9.0"
     
   },
   "eslintConfig": {

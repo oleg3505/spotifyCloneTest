@@ -21,12 +21,12 @@ function AppNavigation(props, ref) {
         <Stack.Screen
           name={screens.Auth}
           component={AuthScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: false, animationEnabled: false }}
         />
         <Stack.Screen
           name={screens.Tab}
           component={TabNavigation}
-          options={{ headerShown: false }}
+          options={{ animationEnabled: false, headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
