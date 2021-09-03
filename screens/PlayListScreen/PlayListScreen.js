@@ -8,6 +8,10 @@ const ListOfSongs = styled(View)({
   alignItems: 'center',
 });
 
+const Description = styled(Text)({
+  color: 'white',
+  textAlign: 'center',
+});
 const SongTitle = styled(Text)({
   color: 'white',
 });
@@ -40,10 +44,10 @@ function SongComponent({ item }) {
   return (
     <TouchableOpacity>
       <ListOfSongs>
-        <SongCover source={{ uri: item.songImgUri }} />
+        <SongCover source={{ uri: item.images[0].url }} />
         <View>
-          <SongTitle>{item.song}</SongTitle>
-          <SongSinger>{item.singer}</SongSinger>
+          <SongTitle>{item.name}</SongTitle>
+          <SongSinger>{item.artists[0].name}</SongSinger>
         </View>
       </ListOfSongs>
     </TouchableOpacity>
@@ -52,20 +56,21 @@ function SongComponent({ item }) {
 
 function PlayListScreen({ route }) {
   const { item } = route.params;
+  console.log(item.trackItems.asArray);
 
+  const data = [...new Set(item.trackItems.asArray)];
   return (
     <Container
       ListHeaderComponent={
         <Header>
-          <PlayListCover source={{ uri: item.imgUri }} />
-          <SongTitle>Play list</SongTitle>
-          <SongTitle>{item.text}</SongTitle>
+          <PlayListCover source={{ uri: item.images[0].url }} />
+          <Description>{item.description}</Description>
         </Header>
       }
       ListFooterComponent={<Footer />}
       renderItem={({ item }) => <SongComponent item={item} />}
       keyExtractor={(item) => item.id}
-      data={item.songs}
+      data={data}
       showsVerticalScrollIndicator={false}
     />
   );

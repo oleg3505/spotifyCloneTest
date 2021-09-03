@@ -1,8 +1,10 @@
 import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled } from '@dripsy/core';
 import { useNavigation } from '@react-navigation/native';
 import { screens } from '../navigation/screens';
+import { useStore } from '../stores/createStore';
+import { observer } from 'mobx-react';
 
 const SectionName = styled(Text)({
   color: 'white',
@@ -37,29 +39,41 @@ const PlayListList = styled(FlatList)({
 function PlayListComponent({ item }) {
   const nav = useNavigation();
 
-  function onPressItem() {
+  async function onPressItem() {
+    await item.trackItems.fetch.run(item.id);
+    console.log(item.trackItems.asArray);
+
     nav.navigate(screens.PlayList, { item: item });
   }
 
   return (
     <Touchble onPress={onPressItem}>
-      <PlayListCover source={{ uri: item.imgUri }} />
-      <PlaylistTitle>{item.text}</PlaylistTitle>
+      <PlayListCover source={{ uri: item.images[0].url }} />
+      <PlaylistTitle>{item.description}</PlaylistTitle>
     </Touchble>
   );
 }
 
-export function Section({ sectionName, data }) {
+function Section({ item }) {
+  const store = useStore();
+  useEffect(() => {
+    // console.log('2', item);
+    item.playlists.fetch.run(item.id);
+  }, []);
+  // console.log(item);
+  // console.log(item.playlists.asArray);
   return (
     <StyledView>
-      <SectionName>{sectionName}</SectionName>
+      <SectionName>{item.name}</SectionName>
       <PlayListList
         horizontal={true}
         renderItem={({ item }) => <PlayListComponent item={item} />}
         keyExtractor={(item) => item.id}
-        data={data}
+        data={item.playlists.asArray}
         showsHorizontalScrollIndicator={false}
       />
     </StyledView>
   );
 }
+
+export default observer(Section);

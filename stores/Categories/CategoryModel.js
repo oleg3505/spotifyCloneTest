@@ -1,5 +1,6 @@
 import { types } from 'mobx-state-tree';
-import { model, Model } from 'mst-collection';
+import { createThunk, model, Model } from 'mst-collection';
+import { PlayListsModel } from '../PLayList/PlayListsModel';
 import { IconModel } from './IconModel';
 
 class Category extends Model({
@@ -7,6 +8,7 @@ class Category extends Model({
   icons: types.array(IconModel),
   id: types.identifier,
   name: types.string,
+  playlists: types.optional(PlayListsModel, {}),
 }) {}
 
 export const CategoryModel = model(Category);
