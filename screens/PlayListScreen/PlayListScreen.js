@@ -56,7 +56,9 @@ function SongComponent({ item }) {
 
 function PlayListScreen({ route }) {
   const { item } = route.params;
+  console.log(item.trackItems.asArray);
 
+  const data = [...new Set(item.trackItems.asArray)];
   return (
     <Container
       ListHeaderComponent={
@@ -68,7 +70,7 @@ function PlayListScreen({ route }) {
       ListFooterComponent={<Footer />}
       renderItem={({ item }) => <SongComponent item={item} />}
       keyExtractor={(item) => item.id}
-      data={item.trackItems.asArray}
+      data={data}
       showsVerticalScrollIndicator={false}
     />
   );
