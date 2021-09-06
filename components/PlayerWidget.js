@@ -2,7 +2,9 @@ import { styled } from '@dripsy/core';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { Swipeable } from 'react-native-gesture-handler';
 import { useStore } from '../stores/createStore';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
 const Container = styled(View)({
   // flex: 1,
@@ -35,14 +37,27 @@ const item = {
   song: 'some song',
 };
 
+function A() {
+  return (
+    <View>
+      <Text>123</Text>
+    </View>
+  );
+}
+
 function PlayerWidget() {
   const store = useStore();
   return (
-    <Container>
-      <SongCover source={{ uri: store.player.playerItem?.images[0].url }} />
-      <SongTitle>{store.player.playerItem?.name}</SongTitle>
-      <SongSinger>{store.player.playerItem?.artists[0].name}</SongSinger>
-    </Container>
+    <GestureRecognizer
+      onSwipeLeft={() => store.player.setIsPlaying(false)}
+      onSwipeRight={() => store.player.setIsPlaying(false)}
+    >
+      <Container>
+        <SongCover source={{ uri: store.player.playerItem?.images[0].url }} />
+        <SongTitle>{store.player.playerItem?.name}</SongTitle>
+        <SongSinger>{store.player.playerItem?.artists[0].name}</SongSinger>
+      </Container>
+    </GestureRecognizer>
   );
 }
 
