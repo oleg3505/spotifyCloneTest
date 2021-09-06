@@ -4,10 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { screens } from './screens';
 import { AuthScreen, InitScreen } from '../screens';
 import TabNavigation from './TabNavigation';
+import PlayerWidget from '../components/PlayerWidget';
+import { useStore } from '../stores/createStore';
+import { observer } from 'mobx-react';
 
 const Stack = createStackNavigator();
 
 function AppNavigation(props, ref) {
+  const store = useStore();
   return (
     <NavigationContainer ref={ref}>
       <Stack.Navigator>
@@ -29,8 +33,9 @@ function AppNavigation(props, ref) {
           options={{ animationEnabled: false, headerShown: false }}
         />
       </Stack.Navigator>
+      {store.player.isPlaying ? <PlayerWidget /> : null}
     </NavigationContainer>
   );
 }
 
-export default React.forwardRef(AppNavigation);
+export default observer(React.forwardRef(AppNavigation));

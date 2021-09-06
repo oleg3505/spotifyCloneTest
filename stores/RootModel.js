@@ -7,12 +7,14 @@ import Api from '../api';
 import { CategoriesListModel } from './Categories/CategoriesListModel';
 import { UserCollection } from './Users/UserCollection';
 import { UserSchema } from './schemas';
+import { PlayerModel } from './PlayerModel';
 
 class Root extends Model({
   viewer: types.optional(ViewerModel, {}),
   auth: types.optional(AuthModel, {}),
   categories: types.optional(CategoriesListModel, {}),
   entities: types.optional(RootEntitiesModel, {}),
+  player: types.optional(PlayerModel, {}),
 }) {
   bootstrap = createThunk(
     () =>
