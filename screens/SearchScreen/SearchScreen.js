@@ -34,7 +34,7 @@ function SearchScreen() {
 
   async function find(data) {
     setSearchData(data);
-    debounce(store.search.fetch.run(searchData), 2000);
+    debounce(store.search.fetch.run(searchData), 300);
   }
   return (
     <Container>
