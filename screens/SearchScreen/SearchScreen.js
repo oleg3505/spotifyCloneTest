@@ -1,10 +1,10 @@
 import { styled } from 'dripsy';
+import { debounce } from 'lodash';
 import { observer } from 'mobx-react';
-import React, { useEffect, useState } from 'react';
-import { Text, TextInput, View, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { Text, TextInput, FlatList } from 'react-native';
 import { Container } from '../../components/Container';
 import { Footer } from '../../components/Footer';
-import { SubmitButton } from '../../components/SubmitButton';
 import { useStore } from '../../stores/createStore';
 import { SongComponent } from '../PlayListScreen/PlayListScreen';
 
@@ -34,7 +34,7 @@ function SearchScreen() {
 
   async function find(data) {
     setSearchData(data);
-    await store.search.fetch.run(searchData);
+    debounce(store.search.fetch.run(searchData), 2000);
   }
   return (
     <Container>
