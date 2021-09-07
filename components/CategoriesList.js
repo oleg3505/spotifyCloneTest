@@ -8,7 +8,6 @@ const Container = styled(FlatList)({
 });
 
 function CategoriesList({ data }) {
-  // console.log(data);
   return (
     <Container
       renderItem={({ item }) => <Section item={item} />}

@@ -8,6 +8,7 @@ import { CategoriesListModel } from './Categories/CategoriesListModel';
 import { UserCollection } from './Users/UserCollection';
 import { UserSchema } from './schemas';
 import { PlayerModel } from './PlayerModel';
+import { SearchResultModel } from './Search/SearchResultModel';
 
 class Root extends Model({
   viewer: types.optional(ViewerModel, {}),
@@ -15,6 +16,7 @@ class Root extends Model({
   categories: types.optional(CategoriesListModel, {}),
   entities: types.optional(RootEntitiesModel, {}),
   player: types.optional(PlayerModel, {}),
+  search: types.optional(SearchResultModel, {}),
 }) {
   bootstrap = createThunk(
     () =>
@@ -23,7 +25,7 @@ class Root extends Model({
         try {
           const res = await Api.Viewer.getViewer();
           const result = flow.merge(res.data, UserSchema);
-          console.log(result);
+
           this.viewer.setUser(result.result);
         } catch (err) {
           console.log(err);

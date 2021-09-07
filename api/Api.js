@@ -57,3 +57,9 @@ export const Categories = {
     return axios.get(`${href}`);
   },
 };
+
+export const Search = {
+  getTracks(input) {
+    return axios.get(`https://api.spotify.com/v1/search?q=${input}&type=track`);
+  },
+};
