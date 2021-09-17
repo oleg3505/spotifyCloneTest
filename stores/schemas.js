@@ -8,3 +8,5 @@ export const PlaylistSchema = new schema.Entity('playlists');
 export const PlayListsCollectionSchema = [PlaylistSchema];
 export const TrackItemSchema = new schema.Entity('trackItems');
 export const TrackItemsCollectionSchema = [TrackItemSchema];
+export const SearchResultSchema = new schema.Entity('search');
+export const SearchResultCollectionSchema = [SearchResultSchema];

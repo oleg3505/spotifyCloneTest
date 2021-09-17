@@ -41,7 +41,7 @@ const Header = styled(View)({
   alignItems: 'center',
 });
 
-function SongComponent({ item }) {
+export function SongComponent({ item }) {
   const store = useStore();
 
   function onPressSong() {
@@ -64,7 +64,6 @@ function SongComponent({ item }) {
 
 function PlayListScreen({ route }) {
   const { item } = route.params;
-  console.log(item.trackItems.asArray);
 
   const data = [...new Set(item.trackItems.asArray)];
   return (

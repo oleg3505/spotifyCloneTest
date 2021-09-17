@@ -17,9 +17,9 @@ class PlayLists extends ListModel(types.safeReference(PlaylistModel), {
           res.data.playlists.items,
           PlayListsCollectionSchema,
         );
-        // console.log(result);
+
         this.set(result.result);
-        // console.log('11111', this);
+        console.log(this.asArray);
       },
   );
 }
