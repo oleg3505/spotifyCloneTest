@@ -5,10 +5,12 @@ import {
 } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { screens } from './screens';
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { Fontisto } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
+import {
+  Fontisto,
+  Ionicons,
+  FontAwesome5,
+  SimpleLineIcons,
+} from '@expo/vector-icons';
 import { HomeScreen, ProfileScreen, SearchScreen } from '../screens';
 
 import { LinearGradient } from 'expo-linear-gradient';

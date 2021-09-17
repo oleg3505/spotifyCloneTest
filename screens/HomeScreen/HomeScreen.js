@@ -11,11 +11,8 @@ import CategoriesList from '../../components/CategoriesList';
 function HomeScreen() {
   const store = useStore();
   useEffect(() => {
-    // console.log(store.viewer.user);
     store.categories.fetch.run();
   }, []);
-  // console.log('1', store.categories.asArray);
-
   return (
     <Container>
       <CategoriesList data={store.categories.asArray} />

@@ -41,8 +41,6 @@ function PlayListComponent({ item }) {
 
   async function onPressItem() {
     await item.trackItems.fetch.run(item.id);
-    console.log(item.trackItems.asArray);
-
     nav.navigate(screens.PlayList, { item: item });
   }
 
@@ -57,11 +55,9 @@ function PlayListComponent({ item }) {
 function Section({ item }) {
   const store = useStore();
   useEffect(() => {
-    // console.log('2', item);
     item.playlists.fetch.run(item.id);
   }, []);
-  // console.log(item);
-  // console.log(item.playlists.asArray);
+
   return (
     <StyledView>
       <SectionName>{item.name}</SectionName>

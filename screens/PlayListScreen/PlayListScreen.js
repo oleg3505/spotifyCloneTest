@@ -2,6 +2,7 @@ import { styled } from 'dripsy';
 import React from 'react';
 import { Text, View, FlatList, Image, TouchableOpacity } from 'react-native';
 import { Footer } from '../../components/Footer';
+import { useStore } from '../../stores/createStore';
 
 const ListOfSongs = styled(View)({
   flexDirection: 'row',
@@ -40,9 +41,16 @@ const Header = styled(View)({
   alignItems: 'center',
 });
 
-function SongComponent({ item }) {
+export function SongComponent({ item }) {
+  const store = useStore();
+
+  function onPressSong() {
+    store.player.setPlayerItem(item);
+    store.player.setIsPlaying(true);
+  }
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPressSong}>
       <ListOfSongs>
         <SongCover source={{ uri: item.images[0].url }} />
         <View>
@@ -56,7 +64,6 @@ function SongComponent({ item }) {
 
 function PlayListScreen({ route }) {
   const { item } = route.params;
-  console.log(item.trackItems.asArray);
 
   const data = [...new Set(item.trackItems.asArray)];
   return (

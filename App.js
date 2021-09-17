@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { StatusBar, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import AppNavigation from './navigation/AppNavigation';
 import { DripsyProvider } from 'dripsy';
 import { createStore, Provider } from './stores/createStore';
 import * as SplashScreen from 'expo-splash-screen';
 import { screens } from './navigation/screens';
 import { StackActions } from '@react-navigation/native';
-import * as SecureStore from 'expo-secure-store';
 
 const theme = {
   colors: {
